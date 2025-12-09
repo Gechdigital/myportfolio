@@ -1,14 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
- *{
-    margin: 0;
-    padding: 0%;
-    box-sizing: border-box;
-    list-style:none;
-    font-family: 'poppins', sans-serif;
-    scroll-behavior: smooth;
-    
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none;
+  font-family: 'Poppins', sans-serif;
+  scroll-behavior: smooth;
 }
+
 :root{
   --prime-color: #2FB297;
   --black-color: #000;
@@ -18,59 +18,66 @@
   --pere-color: #2a2a2a;
   --transition: .3s;
   --transition2: .6s;
-  --tomato-color: var(--tomato-color)
+  /* fixed circular reference and provided a sensible default */
+  --tomato-color: #ff6347;
 }
 
+/* Logo */
 .Logo a{
   font-size: 2rem;
   font-weight: 600;
   color: black;
-  
+}
+nav img{
+  width: 100px;
+  height: 70px;
+  border-radius: 100%;
+  background-color: blue;
 }
 
-    body{
+/* base */
+body{
+  overflow-x: hidden;
+  background-color: gray;
+}
 
-overflow-x:hidden;
-background-color: gray;
- 
-    }
-   /* header and navigation*/
-    
+/* header and navigation */
 header{
-    top: 50px;
-    width: 100%;
-    height: 100vh;
-    background-image: url(images/bckgimg.png);
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    border-bottom-left-radius: 50% 20%;
-    border-bottom-right-radius: 50% 20%;
-    
+  top: 50px;
+  width: 100%;
+  height: 100vh;
+  background-image: url(images/bckgimg.png);
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  border-bottom-left-radius: 50% 20%;
+  border-bottom-right-radius: 50% 20%;
 }
 
-
-
+/* nav */
 nav{
   width: 100%;
   height: 70px;
   display: flex;
-  justify-content:space-between;
+  justify-content: space-between;
   align-items: center;
   padding: 0 12%;
-   gap:5px;
-   background-color: #fff;
-   position: fixed;
-   margin: 10px;
-   top: 1.25px;
-   
+  gap: 5px;
+  background-color: #fff;
+  position: fixed;
+  margin: 10px;
+  top: 1.25px;
+  left: 0;
+  z-index: 999;
 }
+
+/* sticky navigation (fixed height so it doesn't cover whole page) */
 .sticky_nav{
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
+  height: 70px;
   background-color: var(--white-color);
   transition: var(--transition2);
   transform: translateY(-100px);
@@ -84,84 +91,89 @@ nav{
   }
 }
 
+/* menu */
 .menu{
-  display:flex;
-  align-items:center;
-  gap:20px;
-
+  display: flex;
+  align-items: center;
+  gap: 20px;
 }
 
 .menu li a{
   font-size: 1.2rem;
   font-weight: 500;
   color: var(--black-color);
-  
 }
+
+/* legacy nav list styles (kept as-is but corrected) */
 nav ul li{
-    display: inline-block;
+  display: inline-block;
   list-style: none;
   margin: 10px 20px;
 }
 nav ul li a{
-   color: #fff;
+  color: var(--black-color);
   font-size: 18px;
   position: relative;
-  
 }
 nav ul li a::after{
-    content: '';
+  content: '';
   width: 0;
   height: 3px;
   background: black;
   position: absolute;
-  left: 0%;
+  left: 0;
   bottom: -6px;
   transition: 0.5s;
 }
-nav ul li a :hover::after{
-    width: 100%;
+/* fixed hover selector (removed stray space) */
+nav ul li a:hover::after{
+  width: 100%;
 }
-.social_icon{
-color:blue;
- gap:20;
 
+/* social icons */
+.social_icon{
+  color: blue;
+  gap: 20px;
 }
 
 .social_icon i{
-width: 40px;
-height: 40px;
-font-size: 1.2rem;
-background-color: var(--prime-color);
-border-radius: 100%;
-diplay: flex;
-justify-content: center;
-align-items: center;
-color: var(--white-color)
-transition: var(--transition)
+  width: 40px;
+  height: 40px;
+  font-size: 1.2rem;
+  background-color: var(--prime-color);
+  border-radius: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--white-color);
+  transition: var(--transition);
 }
 .social_icon i:hover{
   color: var(--prime-color);
   background-color: var(--white-color);
-  cursor:pointer;
+  cursor: pointer;
 }
+
+/* hamburger / bars (hidden on desktop by default) */
 .bars{
   display: flex;
-
 }
+
+/* welcome / hero */
 .welcome{
- display: flex;
- flex-direction:column;
- justify-content: center;
- align-items: flex-start;
- gap: 10px;
- padding: 5% 12%;
- color: #fff;
- height: 80vh;
- width: 60%
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 5% 12%;
+  color: #fff;
+  height: 80vh;
+  width: 60%;
 }
 .welcome h2{
-  color: var(--prime-color)
-  font-size:1.2rem;
+  color: var(--prime-color);
+  font-size: 1.2rem;
   font-weight: 700;
   padding-top: 60px;
 }
@@ -170,7 +182,6 @@ transition: var(--transition)
   font-size: 2rem;
   font-weight: 700;
   line-height: 2rem;
-  
 }
 .welcome h1 span{
   color: var(--prime-color);
@@ -180,9 +191,10 @@ transition: var(--transition)
   font-size: 1.1rem;
   font-weight: 300;
   color: var(--prime-color);
-
 }
- button{
+
+/* buttons */
+button{
   width: 150px;
   height: 50px;
   border-radius: 10px;
@@ -190,73 +202,70 @@ transition: var(--transition)
   background-color: var(--prime-color);
   color: var(--white-color);
   font-size: 1.3rem;
- }
- button:hover{
-box-shadow: 0 0 10px var(--pere-color);
-cursor:pointer;
- }
- .welcome button{
+}
+button:hover{
+  box-shadow: 0 0 10px var(--pere-color);
+  cursor: pointer;
+}
+.welcome button{
   margin: 20px 0;
- }
+}
 
- /*ABOUT SECTION*/
- .about{
+/* ABOUT SECTION */
+.about{
   gap: 50px;
   margin: 10px;
-
- }
- .about_top{
+}
+.about_top{
   width: 100%;
-  display:flex;
+  display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 10px
- }
- .about_image{
+  gap: 10px;
+}
+.about_image{
   width: 80%;
   position: relative;
- }
- .image{
+}
+.image{
   height: 350px;
- margin-left: 100px;
- }
+  margin-left: 100px;
+}
 
- .about_small{
+.about_small{
   position: absolute;
   top: 40%;
   right: 0;
   left: 20%;
-width: 250px;
-height: 150px;
-object-fit: cover;
-border-radius: 10px;
-box-shadow: 5px 5px 20px rgba(42, 42, 42, 0.439);
+  width: 250px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 5px 5px 20px rgba(42, 42, 42, 0.439);
+}
 
- }
- .about_content{
-    color: var(--white-color);
+/* corrected invalid property font-style: bold -> use normal and keep weight */
+.about_content{
+  color: var(--white-color);
   width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   gap: 10px;
-  font-style: bold;
+  font-style: normal;
   font-weight: 700;
- }
+}
 .about_content h1{
   font-size: 4rem;
   font-weight: 700;
   color: var(--pere-color);
-
 }
 .about_content p{
   font-size: 1.1rem;
   color: var(--pere-color);
   font-weight: 300;
-
 }
 .about_content p:hover{
- 
   background-color: var(--prime-color);
   border-radius: 15px;
   padding: 15px;
@@ -268,16 +277,19 @@ box-shadow: 5px 5px 20px rgba(42, 42, 42, 0.439);
   border: 1px solid var(--prime-color);
   color: var(--black-color);
 }
+/* fixed typo vafr -> var */
 .about_content button:hover{
   background-color: var(--prime-color);
-  color: vafr(--white-color);
+  color: var(--white-color);
 }
+
+/* about bottom (animated skills grid) */
 .about_bottom{
   width: 100%;
   display: grid;
   height: 0;
   opacity: 0;
-  grid-template-columns: repeat(3,1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 20px;
   place-content: center;
   place-items: center;
@@ -289,8 +301,8 @@ box-shadow: 5px 5px 20px rgba(42, 42, 42, 0.439);
 }
 .skill_box{
   margin: 20px;
-  width: 100%5;
-  display:flex;
+  width: 100%;
+  display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
@@ -305,7 +317,7 @@ box-shadow: 5px 5px 20px rgba(42, 42, 42, 0.439);
   height: 5px;
   position: relative;
   border-radius: 5px;
-  background-color: rgb(0, 0, 0, 0.5);
+  background-color: rgba(0,0,0,0.5);
 }
 .percent:after{
   content: '';
@@ -331,11 +343,11 @@ box-shadow: 5px 5px 20px rgba(42, 42, 42, 0.439);
 .skill_box:nth-child(6) .percent:after{
   width: 91%;
 }
-/*service section*/
+
+/* service section */
 .services{
   flex-direction: column;
   margin: 20px;
-  
 }
 
 .headings{
@@ -352,7 +364,7 @@ box-shadow: 5px 5px 20px rgba(42, 42, 42, 0.439);
   color: var(--white-color);
   background-color: var(--blue-color);
   border-radius: 40%;
-  background-img-opacity: 50%;
+  /* removed invalid property background-img-opacity */
 }
 .headings p{
   font-size: 1.1rem;
@@ -400,23 +412,23 @@ box-shadow: 5px 5px 20px rgba(42, 42, 42, 0.439);
 .service_card_det h2{
   font-size: 1.5rem;
   font-weight: 600;
-  color: var(--pere-color)
+  color: var(--pere-color);
 }
 .service_card_det p{
   font-size: 1rem;
   font-weight: 500;
-  color: var(--text-color)
+  color: var(--text-color);
 }
-/* hire me section*/
 
+/* hire me section */
 .hireMe{
-flex-direction: column;
-gap: 30px;
-text-align: center;
+  flex-direction: column;
+  gap: 30px;
+  text-align: center;
 }
 .hireMe h1{
   font-size: 3.5rem;
-  font-size: 700;
+  font-weight: 700;
   color: var(--pere-color);
 }
 .hireMe button{
@@ -430,14 +442,13 @@ text-align: center;
   color: var(--prime-color);
   text-align: center;
 }
-
 .heading h1{
   font-size: 3rem;
   font-weight: 600;
   text-align: center;
 }
 
-/*portfolio section*/
+/* portfolio section */
 .portfolio{
   flex-direction: column;
   gap: 50px;
@@ -449,7 +460,6 @@ text-align: center;
   align-items: center;
   text-align: center;
   gap: 20px;
-
 }
 
 .category a{
@@ -469,15 +479,14 @@ text-align: center;
 .category a:hover{
   background-color: var(--prime-color);
   color: var(--white-color);
-  cursor:pointer;
-
+  cursor: pointer;
 }
+
 .portfolio_images{
   display: grid;
-  grid-template-columns: repeat(auto-fit,minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   margin: 20px;
   gap: 50px;
-
 }
 .portfolio_img{
   position: relative;
@@ -497,7 +506,7 @@ text-align: center;
 .portfolio_img::after{
   content: 'Multi Images';
   position: absolute;
-  top:0;
+  top: 0;
   left: 0;
   width: 100%;
   height: 60vh;
@@ -505,7 +514,7 @@ text-align: center;
   backdrop-filter: blur(0);
   cursor: pointer;
   justify-content: center;
-  display:flex;
+  display: flex;
   align-items: center;
   text-align: center;
   font-size: 2rem;
@@ -513,24 +522,16 @@ text-align: center;
   color: var(--white-color);
   transition: var(--transition);
 }
-.portfolio2:after{
-  content: 'Slider Images';
-}
-.portfolio3:after{
-  content: 'Slider Images';
-}
-.portfolio4:after{
-  content: 'Slider Images';
-}
-.portfolio5:after{
-  content: 'Slider Images';
-}
+.portfolio2:after,
+.portfolio3:after,
+.portfolio4:after,
+.portfolio5:after,
 .portfolio6:after{
   content: 'Slider Images';
 }
 .portfolio_img:hover:after{
- top: 0;
- opacity: 1; 
+  top: 0;
+  opacity: 1;
 }
 
 /* Contact Section */
@@ -539,12 +540,10 @@ text-align: center;
   color: #f9f9f9;
   font-family: arial, sans-serif;
   width: 50%;
-
 }
-#contact h2,{
-font-size: 2rem;
+#contact h2{
+  font-size: 2rem;
   margin-bottom: 10px;
-
 }
 #contact p{
   margin-bottom: 30px;
@@ -587,9 +586,8 @@ form button:hover {
   background: #fff;
   color: #080808;
 }
-/* ========================= */
-/* Responsive Navigation CSS */
-/* ========================= */
+
+
 
 /* Hide hamburger on large screens */
 .bars {
@@ -604,13 +602,12 @@ form button:hover {
   nav {
     padding: 0 5%;
   }
-
   .menu {
     display: none; /* hidden by default */
     flex-direction: column;
     position: absolute;
-    top: 100px; /* below nav bar */
-    right: 20px;
+    top: 50px; /* below nav bar */
+    left: 00px;
     background: var(--white-color);
     width: 220px;
     border-radius: 8px;
@@ -619,8 +616,9 @@ form button:hover {
     z-index: 999;
   }
 
+  /* show when toggled by adding .active with JS */
   .menu.active {
-    display: flex; /* show when toggled */
+    display: flex;
   }
 
   .menu li {
@@ -630,6 +628,7 @@ form button:hover {
   .menu li a {
     color: var(--black-color);
     font-size: 1rem;
+    text-align: left;
   }
 
   .bars {
@@ -638,6 +637,57 @@ form button:hover {
 
   .social_icon {
     display: none; /* hide social icons on small screens */
+  }
+
+  /* make hero and about stack nicely */
+  .welcome {
+    width: 100%;
+    padding: 8% 6%;
+    align-items: center;
+    text-align: center;
+  }
+
+  .about_top{
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .about_image{
+    width: 100%;
+  }
+
+  .image{
+    margin-left: 0;
+    max-width: 100%;
+    height: auto;
+  }
+
+  .about_small{
+    position: relative;
+    left: auto;
+    right: auto;
+    top: auto;
+    margin-top: 12px;
+  }
+
+  /* reduce portfolio overlay height to prevent overflow */
+  .portfolio_img,
+  .portfolio_img img,
+  .portfolio_img::after{
+    height: auto;
+    min-height: 220px;
+  }
+
+  /* contact width full on small/medium */
+  #contact{
+    width: 100%;
+    padding: 40px 16px;
+  }
+
+  /* reduce big headings slightly */
+  .headings h1 {
+    font-size: 2.6rem;
   }
 }
 
@@ -663,6 +713,28 @@ form button:hover {
     width: 120px;
     height: 40px;
     font-size: 1rem;
+  }
+
+  /* stack service cards in single column */
+  .services_cards{
+    grid-template-columns: 1fr;
+  }
+
+  /* make skills grid single column */
+  .about_bottom{
+    grid-template-columns: 1fr;
+  }
+
+  /* footer spacing adapt */
+  footer {
+    padding: 30px 16px;
+  }
+
+  /* smaller portfolio tile height */
+  .portfolio_img,
+  .portfolio_img img,
+  .portfolio_img::after {
+    min-height: 180px;
   }
 }
 

@@ -40,7 +40,8 @@ menuToggle.addEventListener("click", () => {
 
 
 
-function opentab(tabName) {
+
+function opentab(event, tabName) {
     // Remove 'active-link' class from all tab links
     const tabLinks = document.querySelectorAll('.tab-links');
     tabLinks.forEach(link => link.classList.remove('active-link'));
